@@ -66,11 +66,7 @@
                         
                         <a class="btn btn-default checkout" href="/"><i class="fa fa-shopping-cart"></i> Вернуться к покупкам</a>
                     <?php endif; ?>
-
-                </div>
-
-                
-                
+                </div>  
             </div>
         </div>
     </div>
