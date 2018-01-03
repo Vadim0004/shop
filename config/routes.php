@@ -12,7 +12,8 @@ return array(
     
     'cart/delete/([0-9]+)' => 'cart/delete/$1', // actionDelete в CartController
     'cart/addAjax/([0-9]+)' => 'cart/addAjax/$1', // actionAddAjax в CartController
-    'cart/add/([0-9]+)' => 'cart/add/$1', //a ctionAdd в CartController
+    'cart/add/([0-9]+)' => 'cart/add/$1', //ctionAdd в CartController
+    'cart/checkout' => 'cart/checkout', // actionCheckout in CartController
     'cart' => 'cart/index', // actionIndex в CartController
     
     'contacts' => 'site/contact', // actionContact в SiteController
