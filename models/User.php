@@ -35,7 +35,21 @@ class User
         }
     }
     
-     /**
+    /**
+     * Проверяет длину телефона >= 10 
+     * @param type $phone
+     * @return boolean
+     */
+    public static function checkPhone($phone)
+    {
+        if (strlen($phone) >= 10) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Проверяет длину пароля >= 6
      * @param type $name
      * @return boolean
