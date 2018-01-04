@@ -208,4 +208,52 @@ class Product
    
         return $products;
     }
+    
+    /**
+     * Возвращает массив всех продуктов из БД 
+     * @return type array
+     */
+    public static function getProductsList()
+    {
+        $db = Db::getConnection();
+        $sql = 'SELECT * FROM product '
+                . 'ORDER BY id DESC';
+        $result = $db->query($sql);
+        
+        $products = [];
+        $i = 0;
+        
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $products[$i]['id'] = $row['id'];
+            $products[$i]['name'] = $row['name'];
+            $products[$i]['category_id'] = $row['category_id'];
+            $products[$i]['code'] = $row['code'];
+            $products[$i]['price'] = $row['price'];
+            $products[$i]['availability'] = $row['availability'];
+            $products[$i]['brand'] = $row['brand'];
+            $products[$i]['description'] = $row['description'];
+            $products[$i]['is_new'] = $row['is_new'];
+            $products[$i]['is_recommended'] = $row['is_recommended'];
+            $products[$i]['status'] = $row['status'];
+            $i++;
+        }
+        
+        return $products;
+    }
+    
+    /**
+     * Удаляет товар с указанным id
+     * @param type $id <p>id продукта</p>
+     * @return type boolean
+     */
+    public static function deleteProductById($id)
+    {
+        $db = Db::getConnection();
+        $sql = 'DELETE FROM product '
+                . 'WHERE id = :id';
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        return $result->execute();
+        
+    }
 }
