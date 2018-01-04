@@ -22,12 +22,7 @@ return [
     'user/login' => 'user/login', // actionLogin в UserController
     'user/logout' => 'user/logout', // actionLogout в UserController
     'cabinet/edit' => 'cabinet/edit', // actionEdit в CabinetController
-    'cabinet' => 'cabinet/index', // actionIndex в CabinetController
-    // Главная страница:
-    'page-([0-9]+)' => 'site/index/$1', // actionIndex в SiteController
-    '' => 'site/index', // actionIndex в SiteController
-    // Админ панель:
-    'admin' => 'admin/index', // actionIndex in AdminController 
+    'cabinet' => 'cabinet/index', // actionIndex в CabinetController 
     // Управление товарами:    
     'admin/product/create' => 'adminProduct/create',
     'admin/product/update/([0-9]+)' => 'adminProduct/update/$1',
@@ -43,4 +38,9 @@ return [
     'admin/order/delete/([0-9]+)' => 'adminOrder/delete/$1',
     'admin/order/view/([0-9]+)' => 'adminOrder/view/$1',
     'admin/order' => 'adminOrder/index',
+    // Админ панель:
+    'admin' => 'admin/index', // actionIndex in AdminController
+    // Главная страница:
+    'page-([0-9]+)' => 'site/index/$1', // actionIndex в SiteController
+    '' => 'site/index', // actionIndex в SiteController
 ];
