@@ -1,8 +1,8 @@
 <?php
 
-return array(
+return [
     'host' => 'localhost',
     'dbname' => 'phpshop',
     'user' => 'root',
     'password' => '',            
-);
+];
