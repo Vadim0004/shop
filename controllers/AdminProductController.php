@@ -10,7 +10,7 @@ class AdminProductController extends AdminBase
         // Массив товаров
         $productsList = [];
         $productsList = Product::getProductsList();
-        
+                
         require_once ROOT . '/views/admin_product/index.php';
         return true;   
     }
@@ -30,6 +30,18 @@ class AdminProductController extends AdminBase
         
         
         require_once ROOT . '/views/admin_product/delete.php';
+        return true;
+    }
+    
+    public function actionUpdate($id)
+    {
+        // Провереям пользователя что он админ
+        self::checkAdmin();
+        
+        $categoriesList = Category::getCategoriesList();
+        
+        
+        require_once ROOT . '/views/admin_product/update.php';
         return true;
     }
 }
