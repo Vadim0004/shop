@@ -81,7 +81,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/template/images/product-details/similar1.jpg"/>
+                                            <img src="/upload/images/products/<?php echo $sliderItem['id'];?>.jpg"/>
                                             <h2>$<?php echo $sliderItem['price']; ?></h2>
                                             <a href="/product/<?php echo $sliderItem['id']; ?>">
                                                 ID:<?php echo '# ' . $sliderItem['id'] . ' ';?><?php echo $product['name']; ?>
