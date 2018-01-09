@@ -298,6 +298,7 @@ class Product
     {
         // Название изображения-пустышки
         $noImage = 'no-image.jpg';
+        $noImagePath = '/upload/images/products/no-image.jpg';
 
         // Путь к папке с товарами
         $path = '/upload/images/products/';
@@ -309,6 +310,8 @@ class Product
             // Если изображение для товара существует
             // Возвращаем путь изображения товара
             return $pathToProductImage;
+        } else {
+            return $noImagePath;
         }
     }
 }
