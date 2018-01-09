@@ -288,4 +288,27 @@ class Product
         // Иначе возвращаем 0
         return 0;
     }
+    
+    /**
+     * Возвращает путь к продукту
+     * @param type $id <p>id продукта</p>
+     * @return string
+     */
+    public static function getImage($id)
+    {
+        // Название изображения-пустышки
+        $noImage = 'no-image.jpg';
+
+        // Путь к папке с товарами
+        $path = '/upload/images/products/';
+
+        // Путь к изображению товара
+        $pathToProductImage = $path . $id . '.jpg';
+
+        if (file_exists($_SERVER['DOCUMENT_ROOT'].$pathToProductImage)) {
+            // Если изображение для товара существует
+            // Возвращаем путь изображения товара
+            return $pathToProductImage;
+        }
+    }
 }
