@@ -32,7 +32,7 @@
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         
-                                        <img src="/upload/images/products/<?php echo $product['id'];?>.jpg" alt="" />
+                                        <img src="<?php echo Product::getImage($product['id']);?>" alt="" />
                                        
                                         
                                         <h2><?php echo $product['price']; ?>$</h2>
