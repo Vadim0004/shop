@@ -81,7 +81,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/upload/images/products/<?php echo $sliderItem['id'];?>.jpg"/>
+                                            <img src="<?php echo Product::getImage($sliderItem['id']);?>"/>
                                             <h2>$<?php echo $sliderItem['price']; ?></h2>
                                             <a href="/product/<?php echo $sliderItem['id']; ?>">
                                                 ID:<?php echo '# ' . $sliderItem['id'] . ' ';?><?php echo $product['name']; ?>
