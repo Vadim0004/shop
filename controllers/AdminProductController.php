@@ -12,7 +12,7 @@ class AdminProductController extends AdminBase
         $productsList = Product::getProductsList();
                 
         require_once ROOT . '/views/admin_product/index.php';
-        return true;   
+        return true;
     }
     
     public function actionDelete($id)
@@ -103,5 +103,5 @@ class AdminProductController extends AdminBase
         require_once ROOT . '/views/admin_product/create.php';
         return true;
     }
-    
+
 }
