@@ -58,9 +58,6 @@ class AdminProductController extends AdminBase
             $options['is_new'] = $_POST['is_new'];
             $options['is_recommended'] = $_POST['is_recommended'];
             $options['status'] = $_POST['status'];
-            echo '<pre>';
-            print_r($options);
-            echo '</pre>';
             
             //Инициализируем ошибки
             $errors = false;
@@ -73,7 +70,7 @@ class AdminProductController extends AdminBase
             // Если нет ошибок обновляем данные о продукте
             if ($errors == false) {
                 // Обновляем продукт
-                $result = Product::updateProduct($id, $option);   
+                $result = Product::updateProduct($id, $options);
             }
             
             if ($result == 1) {
