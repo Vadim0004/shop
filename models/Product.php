@@ -68,8 +68,9 @@ class Product
     
     
     /**
+     * Возвращает массив с данными о продукте
      * Returns product item by id
-     * @param integer $id
+     * @param integer $id <p>Порядковый номер продукта в БД</p>
      */
     public static function getProductById($id)
     {
@@ -77,8 +78,10 @@ class Product
 
         if ($id) {                        
             $db = Db::getConnection();
-            
-            $result = $db->query('SELECT * FROM product WHERE id=' . $id);
+            $sql = 'SELECT * FROM product WHERE id = :id';
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+            $result->execute();
             $result->setFetchMode(PDO::FETCH_ASSOC);
             
             return $result->fetch();
@@ -312,6 +315,38 @@ class Product
             return $pathToProductImage;
         } else {
             return $noImagePath;
+        }
+    }
+    
+    /**
+     * Обновляет БД по выбранному ID и парметрам в виде массива
+     * @param type $id <p>Номер продукта где обновлять БД</p>
+     * @param array $option <p>Массив элементов для БД</p>
+     * @return boolean
+     */
+    public static function updateProduct($id, array $product)
+    {
+        $db = Db::getConnection();
+        $sql = 'UPDATE product '
+                . 'SET name = :name, category_id = :category_id, code = :code, price = :price, availability = :availability, brand = :brand, description = :description, is_new = :is_new, is_recommended = :is_recommended, status = :status '
+                . 'WHERE id = :id';
+        $result = $db->prepare($sql);
+        $result->bindParam(':name', $product['name'], PDO::PARAM_STR);
+        $result->bindParam(':category_id', $product['category_id'], PDO::PARAM_INT);
+        $result->bindParam(':code', $product['code'], PDO::PARAM_STR);
+        $result->bindParam(':price', $product['price'], PDO::PARAM_STR);
+        $result->bindParam(':availability', $product['availability'], PDO::PARAM_INT);
+        $result->bindParam(':brand', $product['brand'], PDO::PARAM_STR);
+        $result->bindParam(':description', $product['description'], PDO::PARAM_STR);
+        $result->bindParam(':is_new', $product['is_new'], PDO::PARAM_INT);
+        $result->bindParam(':is_recommended', $product['is_recommended'], PDO::PARAM_INT);
+        $result->bindParam(':status', $product['status'], PDO::PARAM_INT);
+        $result = $result->execute();
+        
+        if ($result == 1) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
