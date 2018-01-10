@@ -24,15 +24,15 @@ return [
     'cabinet/edit' => 'cabinet/edit', // actionEdit в CabinetController
     'cabinet' => 'cabinet/index', // actionIndex в CabinetController 
     // Управление товарами:    
-    'admin/product/create' => 'adminProduct/create',
-    'admin/product/update/([0-9]+)' => 'adminProduct/update/$1',
-    'admin/product/delete/([0-9]+)' => 'adminProduct/delete/$1',
-    'admin/product' => 'adminProduct/index',
+    'admin/product/create' => 'adminProduct/create', // actionCreate in AdminProductController
+    'admin/product/update/([0-9]+)' => 'adminProduct/update/$1',  // actionUpdate in AdminProductController
+    'admin/product/delete/([0-9]+)' => 'adminProduct/delete/$1', // actionDelete in AdminProductController
+    'admin/product' => 'adminProduct/index',  // actionIndex in AdminProductController
     // Управление категориями:    
     'admin/category/create' => 'adminCategory/create',
     'admin/category/update/([0-9]+)' => 'adminCategory/update/$1',
     'admin/category/delete/([0-9]+)' => 'adminCategory/delete/$1',
-    'admin/category' => 'adminCategory/index',
+    'admin/category' => 'adminCategory/index', // actionIndex in AdminCategoryController
     // Управление заказами:    
     'admin/order/update/([0-9]+)' => 'adminOrder/update/$1',
     'admin/order/delete/([0-9]+)' => 'adminOrder/delete/$1',
