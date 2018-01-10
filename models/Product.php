@@ -331,6 +331,7 @@ class Product
                 . 'SET name = :name, category_id = :category_id, code = :code, price = :price, availability = :availability, brand = :brand, description = :description, is_new = :is_new, is_recommended = :is_recommended, status = :status '
                 . 'WHERE id = :id';
         $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':name', $product['name'], PDO::PARAM_STR);
         $result->bindParam(':category_id', $product['category_id'], PDO::PARAM_INT);
         $result->bindParam(':code', $product['code'], PDO::PARAM_STR);
@@ -341,9 +342,9 @@ class Product
         $result->bindParam(':is_new', $product['is_new'], PDO::PARAM_INT);
         $result->bindParam(':is_recommended', $product['is_recommended'], PDO::PARAM_INT);
         $result->bindParam(':status', $product['status'], PDO::PARAM_INT);
-        $result = $result->execute();
+        $myResult = $result->execute();
         
-        if ($result == 1) {
+        if ($myResult == 1) {
             return true;
         } else {
             return false;
