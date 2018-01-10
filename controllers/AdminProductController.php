@@ -40,6 +40,47 @@ class AdminProductController extends AdminBase
         // Провереям пользователя что он админ
         self::checkAdmin();
         
+        // Подключаем категории
+        $categoriesList = Category::getCategoriesList();
+        
+        // Обновляем данные о выбранном продукте из БД
+        $product = Product::getProductById($id);
+        
+        // Если форма отправлена
+        if (isset($_POST['submit'])) {
+            $options['name'] = $_POST['name'];
+            $options['code'] = $_POST['code'];
+            $options['price'] = $_POST['price'];
+            $options['category_id'] = $_POST['category_id'];
+            $options['brand'] = $_POST['brand'];
+            $options['description'] = $_POST['description'];
+            $options['availability'] = $_POST['availability'];
+            $options['is_new'] = $_POST['is_new'];
+            $options['is_recommended'] = $_POST['is_recommended'];
+            $options['status'] = $_POST['status'];
+            echo '<pre>';
+            print_r($options);
+            echo '</pre>';
+            
+            //Инициализируем ошибки
+            $errors = false;
+            
+            // При необходимости можно валидировать значения нужным образом
+            if (!isset($options['name']) || empty($options['name'])) {
+                $errors[] = 'Заполните поля';
+            }
+            
+            // Если нет ошибок обновляем данные о продукте
+            if ($errors == false) {
+                // Обновляем продукт
+                $result = Product::updateProduct($id, $option);   
+            }
+            
+            if ($result == 1) {
+                header("Location: /admin/product");
+            }
+        }
+        
         // Получаем список категорий для выпадающего списка
         $categoriesList = Category::getCategoriesList();
         
