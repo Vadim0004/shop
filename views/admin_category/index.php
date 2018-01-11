@@ -5,35 +5,38 @@
         <div class="breadcrumbs">
             <ol class="breadcrumb">
                 <li><a href="/admin">Админпанель</a></li>
-                <li class="active">Управление товарами</li>
+                <li class="active">Управление категориями</li>
             </ol>
         </div>
 
-        <a href="/admin/category/create" class="btn btn-default back"><i class="fa fa-plus"></i> Добавить заказ</a>
+        <a href="/admin/category/create" class="btn btn-default back"><i class="fa fa-plus"></i> Добавить категорию</a>
 
-        <h4>Список заказов</h4>
+        <h4>Список категорий</h4>
 
         <br/>
 
         <table class="table-bordered table-striped table">
             <tr>
-                <th>Номер заказа</th>
-                <th>Имя пользователя</th>
-                <th>Телефон пользователя</th>
-                <th>Дата Заказа</th>
-                <th>Продукты</th>
+                <th>Номер категории</th>
+                <th>Название категории</th>
+                <th>Статус</th>
                 <th>Редактирование</th>
                 <th>Удаление</th>
             </tr>
-            <?php foreach ($orders as $oredersItem):?>
+            <?php foreach ($categoryList as $category):?>
             <tr>
-                <td><?php echo $oredersItem['id'];?></td>
-                <td><?php echo $oredersItem['user_name'];?></td>
-                <td><?php echo $oredersItem['user_phone'];?></td>
-                <td><?php echo $oredersItem['date'];?></td>
-                <td><?php echo $oredersItem['products'];?></td>
-                <td><a href="/admin/admin/category/update/<?php echo $oredersItem['id'];?>" title="Редактировать" ><i class="fa fa-pencil-square-o"></i></a></td>
-                <td><a href="/admin/admin/category/update/<?php echo $oredersItem['id'];?>" title="Удалить"><i class="fa fa-times"></a></td>
+                <td><?php echo $category['id'];?></td>
+                <td><?php echo $category['name'];?></td>
+                
+                <td>
+                    <?php if ($category['status'] == 1):?>
+                    <?php echo 'Включена';?>
+                    <?php else:?>
+                    <?php echo 'Выключена';?>
+                    <?php endif;?>
+                </td>     
+                <td><a href="/admin/order/update/<?php echo $oredersItem['id'];?>" title="Редактировать" ><i class="fa fa-pencil-square-o"></i></a></td>
+                <td><a href="/admin/order/delete/<?php echo $oredersItem['id'];?>" title="Удалить"><i class="fa fa-times"></a></td>
             </tr>
             <?php endforeach;?>
         </table>
