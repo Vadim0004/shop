@@ -105,7 +105,7 @@
                                     <li><a href="/blog/">Блог</a></li> 
                                     <li><a href="/about/">О магазине</a></li>
                                     <li><a href="/contacts/">Контакты</a></li>
-                                    <!--/<li><a href="/user/register/">Регистрация в магазине</a></li>-->
+                                    <li><a href="/user/register/">Регистрация в магазине</a></li>
                                 </ul>
                             </div>
                         </div>
