@@ -28,7 +28,7 @@ return [
     'admin/product/update/([0-9]+)' => 'adminProduct/update/$1',  // actionUpdate in AdminProductController
     'admin/product/delete/([0-9]+)' => 'adminProduct/delete/$1', // actionDelete in AdminProductController
     'admin/product' => 'adminProduct/index',  // actionIndex in AdminProductController
-    // Управление категориями:    
+    // Управление категориями:
     'admin/category/create' => 'adminCategory/create',
     'admin/category/update/([0-9]+)' => 'adminCategory/update/$1',
     'admin/category/delete/([0-9]+)' => 'adminCategory/delete/$1',
