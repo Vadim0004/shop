@@ -20,4 +20,31 @@ class Order
         
         return $result->execute();
     }
+    
+    /**
+     * Возвращает список всех покупок массивом
+     * @return array 
+     */
+    public static function getOrdersList()
+    {
+        $db = Db::getConnection();
+        $sql = 'SELECT * FROM product_order';
+        $result = $db->query($sql);
+        
+        $listOrders = [];
+        $i = 0;
+        
+        while ($row = $result->fetch()) {
+            $listOrders[$i]['id'] = $row['id'];
+            $listOrders[$i]['user_name'] = $row['user_name'];
+            $listOrders[$i]['user_phone'] = $row['user_phone'];
+            $listOrders[$i]['user_comment'] = $row['user_comment'];
+            $listOrders[$i]['user_id'] = $row['user_id'];
+            $listOrders[$i]['date'] = $row['date'];
+            $listOrders[$i]['products'] = $row['products'];
+            $i++;
+        }
+        
+        return $listOrders;
+    }
 }
