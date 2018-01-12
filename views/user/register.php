@@ -6,7 +6,7 @@
 
             <div class="col-sm-4 col-sm-offset-4 padding-right">
                 <div class="signup-form"><!--sign up form-->
-                    <h2>Регистрация на сайте</h2>
+                    <h4>Регистрация на сайте</h4>
 
                     <?php if (isset($create)): ?>
 
