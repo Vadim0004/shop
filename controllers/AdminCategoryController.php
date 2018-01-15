@@ -60,4 +60,28 @@ class AdminCategoryController extends AdminBase
         return true;
     }
     
+    public function actionDelete($id)
+    {
+        // Проверяем администратор ли?
+        self::checkAdmin();
+        
+        // подтягиваем товар из БД по id
+        $categoryId = Category::getCategoryById($id);
+        
+        // Если отправлена форма
+        if (isset($_POST['submit'])) {
+            
+            // Флаг ошибок
+            $errors = false;
+            // Удаляем категроию из БД
+            if(!Category::deleteCategory($id)) {
+               $errors[] = 'Еrror';
+            } else {
+                header("Location: /admin/category");
+            }
+        }
+        
+        require_once ROOT . '/views/admin_category/delete.php';
+        return true;
+    }
 }
