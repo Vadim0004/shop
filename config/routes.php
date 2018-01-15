@@ -30,7 +30,7 @@ return [
     'admin/product' => 'adminProduct/index',  // actionIndex in AdminProductController
     // Управление категориями:
     'admin/category/create' => 'adminCategory/create', // actionCreate in AdminCategoryController
-    'admin/category/update/([0-9]+)' => 'adminCategory/update/$1',
+    'admin/category/update/([0-9]+)' => 'adminCategory/update/$1', //actionUpdate in AdminCategoryController
     'admin/category/delete/([0-9]+)' => 'adminCategory/delete/$1', // actionDelete in AdminCategoryController
     'admin/category' => 'adminCategory/index', // actionIndex in AdminCategoryController
     // Управление заказами:    
