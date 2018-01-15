@@ -35,8 +35,8 @@
                     <?php echo 'Выключена';?>
                     <?php endif;?>
                 </td>     
-                <td><a href="/admin/order/update/<?php echo $oredersItem['id'];?>" title="Редактировать" ><i class="fa fa-pencil-square-o"></i></a></td>
-                <td><a href="/admin/order/delete/<?php echo $oredersItem['id'];?>" title="Удалить"><i class="fa fa-times"></a></td>
+                <td><a href="/admin/category/update/<?php echo $category['id'];?>" title="Редактировать" ><i class="fa fa-pencil-square-o"></i></a></td>
+                <td><a href="/admin/category/delete/<?php echo $category['id'];?>" title="Удалить"><i class="fa fa-times"></a></td>
             </tr>
             <?php endforeach;?>
         </table>
