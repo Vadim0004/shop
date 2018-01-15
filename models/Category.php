@@ -70,5 +70,48 @@ class Category
             return false;
         }
     }
+    
+    /**
+     * Возвращает массив данных о категории по ее ID
+     * @param type $id <p>Id категории</p>
+     * @return array 
+     */
+    public static function getCategoryById($id)
+    {
+        $db = Db::getConnection();
+        $sql = 'SELECT * FROM category '
+                . 'WHERE id = :id';
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->execute();
+        $categoryid = [];
+        while ($row = $result->fetch()) {
+            $categoryid['id'] = $row['id'];
+            $categoryid['name'] = $row['name'];
+            $categoryid['status'] = $row['status'];
+        }
+        
+        return $categoryid;
+    }
 
+    /**
+     * Удаляем категорию по id из БД
+     * @param type $id <p>Id категории</p>
+     * @return boolean
+     */
+    public static function deleteCategory($id)
+    {
+        $db = Db::getConnection();
+        $sql = 'DELETE FROM category '
+                . 'WHERE id = :id';
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        
+        if ($result->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
 }
