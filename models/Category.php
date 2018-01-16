@@ -112,6 +112,32 @@ class Category
         } else {
             return false;
         }
-        
+    }
+    
+    /**
+     * Обновляет данные о категории по параметрам 
+     * @param type $id <p>id категории где обновлять данные</p>
+     * @param array $array <p>Массив с данными о категории из формы</p>
+     * @return boolean
+     */
+    public static function updateCategoryById($id, array $array)
+    {
+        $id = intval($id);
+        if ($id) {
+            $db = Db::getConnection();
+            $sql = 'UPDATE category '
+                    . 'SET name = :name, status = :status '
+                    . 'WHERE id = :id';
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+            $result->bindParam(':name', $array['name'], PDO::PARAM_STR);
+            $result->bindParam(':status', $array['status'], PDO::PARAM_INT);
+            
+            if ($result->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }
