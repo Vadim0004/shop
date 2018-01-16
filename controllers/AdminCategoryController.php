@@ -84,4 +84,39 @@ class AdminCategoryController extends AdminBase
         require_once ROOT . '/views/admin_category/delete.php';
         return true;
     }
+    
+    
+    public function actionUpdate($id)
+    {
+        // Проверяем администратор ли?
+        self::checkAdmin();
+        
+        // Подтягиваем категорию по id из БД
+        $category = Category::getCategoryById($id);
+        
+        // Если существует отправка формы
+        if (isset($_POST['submit'])) {
+            // Записываем из формы значения в переменные
+            $option['name'] = $_POST['name'];
+            $option['status'] = $_POST['status'];
+            
+            // Флаг ошибок
+            $errors = false;
+            
+            if (!is_array($option) && empty($option)) {
+                $errors[] = 'Оштибка ввода данных';
+            }
+            
+            // Если нет ошибок тогда разрешаем редактирование категории
+            if($errors == false) {
+                Category::updateCategoryById($category['id'], $option);
+                header("Location: /admin/category");
+            }
+            
+        }
+        
+        require_once ROOT . '/views/admin_category/update.php';
+        return true;
+    }
+    
 }
