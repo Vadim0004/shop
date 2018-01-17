@@ -47,4 +47,35 @@ class Order
         
         return $listOrders;
     }
+    
+    /**
+     * Возвращает массив по номеру заказа
+     * @param type $id <p>Id заказа</p>
+     * @return array
+     */
+    public static function getOrderById($id)
+    {
+        $id = intval($id);
+        
+        if ($id) {
+            $db = Db::getConnection();
+            $sql = 'SELECT * FROM product_order '
+                    . 'WHERE id = :id';
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+            $result->execute();
+            $arrayOrders = [];
+            $row = $result->fetch();
+            $arrayOrders['id'] = $row['id'];
+            $arrayOrders['user_name'] = $row['user_name'];
+            $arrayOrders['user_phone'] = $row['user_phone'];
+            $arrayOrders['user_comment'] = $row['user_comment'];
+            $arrayOrders['user_id'] = $row['user_id'];
+            $arrayOrders['date'] = $row['date'];
+            $arrayOrders['products'] = $row['products'];
+            $arrayOrders['status'] = $row['status'];
+            
+            return $arrayOrders;
+        }
+    }
 }
