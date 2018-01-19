@@ -98,4 +98,36 @@ class Order
                 break;
         }
     }
+    
+    /**
+     * Возвращаем массив заказов сделанный данным клиентов по id
+     * @param type $id <p>id клиента</p>
+     * @return type array
+     */
+    public static function getOrdersByAuthorId($id)
+    {
+        $id = intval($id);
+        if ($id) {
+            $db = DB::getConnection();
+            $sql = 'SELECT * FROM product_order WHERE '
+                    . 'user_id = :user_id';
+            $result = $db->prepare($sql);
+            $result->bindParam(':user_id', $id, PDO::PARAM_INT);
+            $result->execute();
+            $arrayOrders = [];
+            $i = 0;
+            while ($row = $result->fetch()) {
+                $arrayOrders[$i]['id'] = $row['id'];
+                $arrayOrders[$i]['user_name'] = $row['user_name'];
+                $arrayOrders[$i]['user_phone'] = $row['user_phone'];
+                $arrayOrders[$i]['user_comment'] = $row['user_comment'];
+                $arrayOrders[$i]['date'] = $row['date'];
+                $arrayOrders[$i]['products'] = $row['products'];
+                $arrayOrders[$i]['status'] = $row['status'];
+                $i++;
+            }
+            return $arrayOrders;
+        }
+        
+    }
 }
