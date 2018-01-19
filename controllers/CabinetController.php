@@ -58,4 +58,16 @@ class CabinetController
         require_once ROOT . '/views/cabinet/edit.php';
         return true;
     }
+    
+    public function actionHistory()
+    {
+        // Проверяем залогинен ли пользователь и получаем из сесси его id
+        $userId = User::checkLogged();
+
+        // Из таблицы заказов берем все его заказы по user_id
+        $orders = Order::getOrdersByAuthorId($userId);
+        
+        require_once ROOT . '/views/cabinet/history.php';
+        return true;
+    }
 }
