@@ -18,6 +18,7 @@ return [
     'about' => 'site/about', // actionAbout in SiteController 
     'contacts' => 'site/contact', // actionContact в SiteController
     // Пользователь:
+    'cabinet/history' => 'cabinet/history', // actionHistory in CabinetController 
     'user/register' => 'user/register', // actionRegister в UserController
     'user/login' => 'user/login', // actionLogin в UserController
     'user/logout' => 'user/logout', // actionLogout в UserController
