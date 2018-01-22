@@ -15,6 +15,8 @@ return [
     'cart/checkout' => 'cart/checkout', // actionCheckout in CartController
     'cart' => 'cart/index', // actionIndex в CartController
     // О магазине:
+    'blog/([0-9]+)' => 'blog/view/$1', // actionViews in BlogController
+    'blog' => 'blog/index', // actionIndex in BlogController
     'about' => 'site/about', // actionAbout in SiteController 
     'contacts' => 'site/contact', // actionContact в SiteController
     // Пользователь:
