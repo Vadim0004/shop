@@ -4,7 +4,7 @@
         <div class="row">
             <?php foreach ($blogList as $blogItem): ?>
                 <div class="post">
-                    <h2 class="title"><a href="/blog/<?php echo $blogItem['id']; ?>"><?php echo $blogItem['title']; ?></a></h2>
+                    <h2 class="title"><a href="/blog/<?php echo $blogItem['id']; ?>"><?php echo '# ' . $blogItem['id'] . ' ' .$blogItem['title']; ?></a></h2>
                     <p class="byline"><?php echo $blogItem['date']; ?></p>
                     <div class="entry">
                         <p><?php echo $blogItem['short_content']; ?></p>
