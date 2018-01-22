@@ -69,4 +69,9 @@ class SiteController
         return true;
     }
 
+    public function actionAbout()
+    {   
+        require_once ROOT . '/views/about/index.php';
+        return true;
+    }
 }
