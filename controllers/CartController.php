@@ -81,10 +81,10 @@ class CartController
         $result = false;
 
         // Проверяем является ли пользователь гостем
-        if (!User::isGuest()) {
+        if (User::isGuest()) {
             // Если пользователь не гость
             // Получаем информацию о пользователе из БД
-            $userId = User::checkLogged();
+            $userId = User::checkLogged();;
             $user = User::getUserById($userId);
             $userName = $user['name'];
         } else {
