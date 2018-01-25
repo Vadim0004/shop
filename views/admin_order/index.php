@@ -21,6 +21,7 @@
                 <th>Имя пользователя</th>
                 <th>Телефон пользователя</th>
                 <th>Дата Заказа</th>
+                <th>Статус заказа</th>
                 <th>Просмотр</th>
                 <th>Редактирование</th>
                 <th>Удаление</th>
@@ -31,6 +32,7 @@
                 <td><?php echo $oredersItem['user_name'];?></td>
                 <td><?php echo $oredersItem['user_phone'];?></td>
                 <td><?php echo $oredersItem['date'];?></td>
+                <td><?php echo Order::getNameStatusOrder($oredersItem['status']);?></td>
                 <td><a href="/admin/order/view/<?php echo $oredersItem['id'];?>" title="Отображение"> <i class="fa fa-eye"></i></a></td>
                 <td><a href="/admin/order/update/<?php echo $oredersItem['id'];?>" title="Редактировать" ><i class="fa fa-pencil-square-o"></i></a></td>
                 <td><a href="/admin/order/update/<?php echo $oredersItem['id'];?>" title="Удалить"><i class="fa fa-times"></a></td>
