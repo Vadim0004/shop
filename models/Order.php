@@ -42,6 +42,7 @@ class Order
             $listOrders[$i]['user_id'] = $row['user_id'];
             $listOrders[$i]['date'] = $row['date'];
             $listOrders[$i]['products'] = $row['products'];
+            $listOrders[$i]['status'] = $row['status'];
             $i++;
         }
         
@@ -129,5 +130,32 @@ class Order
             return $arrayOrders;
         }
         
+    }
+    /**
+     * Обновляет данные в БД о заказе
+     * @param type $id <p>Номер заказа</p>
+     * @param array $array <p>Массив с данными</p>
+     * @return boolean
+     */
+    public static function updateOrder($id, array $array)
+    {
+        if ($id && is_array($array) && !empty($array)) {
+            $db = DB::getConnection();
+            $sql = 'UPDATE product_order '
+                    . 'SET user_name = :user_name, user_phone = :user_phone, user_comment = :user_comment, status = :status '
+                    . 'WHERE id = :id ';
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+            $result->bindParam('user_name', $array['user_name'], PDO::PARAM_STR);
+            $result->bindParam(':user_phone', $array['user_phone'], PDO::PARAM_STR);
+            $result->bindParam(':user_comment', $array['user_comment'], PDO::PARAM_STR);
+            $result->bindParam(':status', $array['status'], PDO::PARAM_INT);
+            
+            if ($result->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }
